@@ -72,8 +72,9 @@ Sauvegardez le panel.
 
 **Réponse — Listez les instances disponibles dans votre menu :**
 
-    (votre réponse ici)
-
+    localhost:9100
+    node-exporter:9100
+    prometheus:9090
 
 ### 4. Ajouter une variable `job`
 
@@ -88,9 +89,9 @@ Créez une deuxième variable pour filtrer par job Prometheus.
 
 **Réponse — Quels jobs apparaissent dans le menu ?**
 
-    (votre réponse ici)
-
-
+    node-exporter
+    prometheus
+    
 ### 5. Variable d'intervalle pour le rate()
 
 Créez une variable pour contrôler l'intervalle utilisé dans les fonctions `rate()`.
@@ -111,8 +112,15 @@ sum by(route) (rate(http_requests_total[$interval]))
 
 **Réponse — Que se passe-t-il si vous choisissez un intervalle de 1m vs 30m ?**
 
-    (votre réponse ici)
+Avec 1m :
+- les métriques sont plus réactives
+- les variations et pics apparaissent rapidement
+- le graphique est plus “bruité”
 
+Avec 30m :
+- les données sont lissées
+- les pics courts disparaissent
+- le graphique est plus stable mais moins précis en temps réel
 
 ## Annotations
 
@@ -134,8 +142,14 @@ Les **annotations** permettent d'afficher des événements ponctuels sur vos gra
 
 **Réponse — A quoi cela peut-il servir en production ?**
 
-    (votre réponse ici)
+Les annotations permettent de corréler les événements avec les métriques :
+- déploiements applicatifs
+- redémarrages de serveurs
+- incidents
+- maintenances
+- pics de charge
 
+Cela aide à comprendre rapidement pourquoi un graphique change à un moment précis.
 
 ## Résultat
 
